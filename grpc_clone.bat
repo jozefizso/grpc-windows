@@ -4,10 +4,15 @@ pushd %~dp0
 echo #### grpc clone start!
 
 echo #### git clone
-git clone -b v1.0.x https://github.com/grpc/grpc
+git clone -b v1.0.0 https://github.com/grpc/grpc grpc
 cd grpc
 git submodule update --init
-cd ..
+
+cd third_party\protobuf
+git checkout v3.1.0
+popd
+
+pushd %~dp0
 
 echo #### props edit
 powershell -executionpolicy bypass -file edit_props.ps1
