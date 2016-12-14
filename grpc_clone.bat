@@ -17,10 +17,18 @@ pushd %~dp0
 echo #### props edit
 powershell -executionpolicy bypass -file edit_props.ps1
 
+:: patch Protobuf with file version information
+robocopy .\protobuf .\grpc\third_party\protobuf /e /nfl /ndl
+:: patch grpc and protoc plugins
+robocopy .\grpc-patch .\grpc /e /nfl /ndl
+powershell -executionpolicy bypass -file grpc_cpp_plugin_patch.ps1
+
+
 echo #### nuget packages install
 mkdir grpc\vsprojects\packages & cd grpc\vsprojects\packages
 powershell -executionpolicy bypass -Command Invoke-WebRequest https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -OutFile %cd%\nuget.exe
 nuget.exe install ..\vcxproj\grpc\packages.config
+
 
 echo #### grpc clone done!
 
