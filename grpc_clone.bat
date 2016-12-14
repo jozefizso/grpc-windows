@@ -18,7 +18,7 @@ echo #### props edit
 powershell -executionpolicy bypass -file edit_props.ps1
 
 :: patch Protobuf with file version information
-robocopy .\protobuf .\grpc\third_party\protobuf /e /nfl /ndl
+robocopy .\protobuf-patch .\grpc\third_party\protobuf /e /nfl /ndl
 :: patch grpc and protoc plugins
 robocopy .\grpc-patch .\grpc /e /nfl /ndl
 powershell -executionpolicy bypass -file grpc_cpp_plugin_patch.ps1
