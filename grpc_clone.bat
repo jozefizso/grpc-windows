@@ -4,7 +4,7 @@ pushd %~dp0
 echo #### grpc clone start!
 
 echo #### git clone
-git clone -b v1.0.0 https://github.com/grpc/grpc grpc
+git clone -b v1.0.1 https://github.com/grpc/grpc grpc
 cd grpc
 git submodule update --init
 
