@@ -54,17 +54,17 @@ devenv.com grpc.sln /build "Release|x64" /project grpc++_unsecure
 if not %ERRORLEVEL% == 0 goto Finish
 robocopy /mir .\x64\Release ..\bin\grpc\release /XF *grpc_cpp_plugin*
 
-devenv.com grpc.sln /clean "Debug"
-devenv.com grpc.sln /clean "Release"
-devenv.com grpc.sln /build "Debug-DLL|x64" /project grpc++
-devenv.com grpc.sln /build "Debug-DLL|x64" /project grpc++_unsecure
-if not %ERRORLEVEL% == 0 goto Finish
-robocopy /mir .\x64\Debug-DLL ..\bin\grpc\debug_dll
+:: devenv.com grpc.sln /clean "Debug"
+:: devenv.com grpc.sln /clean "Release"
+:: devenv.com grpc.sln /build "Debug-DLL|x64" /project grpc++
+:: devenv.com grpc.sln /build "Debug-DLL|x64" /project grpc++_unsecure
+:: if not %ERRORLEVEL% == 0 goto Finish
+:: robocopy /mir .\x64\Debug-DLL ..\bin\grpc\debug_dll
 
-devenv.com grpc.sln /build "Release-DLL|x64" /project grpc++
-devenv.com grpc.sln /build "Release-DLL|x64" /project grpc++_unsecure
-if not %ERRORLEVEL% == 0 goto Finish
-robocopy /mir .\x64\Release-DLL ..\bin\grpc\release_dll /XF *grpc_cpp_plugin*
+:: devenv.com grpc.sln /build "Release-DLL|x64" /project grpc++
+:: devenv.com grpc.sln /build "Release-DLL|x64" /project grpc++_unsecure
+:: if not %ERRORLEVEL% == 0 goto Finish
+:: robocopy /mir .\x64\Release-DLL ..\bin\grpc\release_dll /XF *grpc_cpp_plugin*
 
 echo #### grpc build done!
 
