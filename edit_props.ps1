@@ -8,4 +8,8 @@ $newElem.set_InnerXML("4819;%(DisableSpecificWarnings)")
 $prop.Project.ItemDefinitionGroup.ClCompile.AppendChild($newElem)
 $prop.Project.ItemDefinitionGroup.ClCompile.RemoveAttribute("xmlns");
 
+$debugSymbols = $prop.CreateElement("DebugSymbols", $prop.DocumentElement.NamespaceURI)
+$debugSymbols.InnerText = "true"
+$prop.Project.PropertyGroup[1].AppendChild($debugSymbols)
+
 $prop.Save($propPath)
