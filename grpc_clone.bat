@@ -4,13 +4,13 @@ pushd %~dp0
 echo #### grpc clone start!
 
 echo #### git clone
-git clone -b v1.0.1 -c core.eol=lf -c core.autocrlf=input https://github.com/grpc/grpc grpc
+git clone -b release/v1.0.1-patch-zlib -c core.eol=lf -c core.autocrlf=input https://github.com/jozefizso/grpc grpc
 cd grpc
 git submodule update --init
-git submodule foreach --recursive git config core.eol lf
-git submodule foreach --recursive git config core.autocrlf input
-git submodule foreach --recursive git rm -rf --cached .
-git submodule foreach --recursive git reset --hard HEAD
+git submodule foreach --recursive --quiet git config core.eol lf
+git submodule foreach --recursive --quiet git config core.autocrlf input
+git submodule foreach --recursive --quiet git rm -rf --cached .
+git submodule foreach --recursive --quiet git reset --hard HEAD
 
 cd third_party\protobuf
 git checkout -b v3.1.0 v3.1.0
